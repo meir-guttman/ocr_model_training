@@ -1,0 +1,9 @@
+venv/
+.venv/
+__pycache__/
+*.pth
+*.pt
+*.onnx
+dataset/
+images/
+.idea/
