@@ -41,6 +41,20 @@ def train_model():
     # 2. יצירת המודל
     model = CRNN(vocab_size=VOCAB_SIZE, hidden_size=256).to(device)
 
+    # The path to your saved model weights
+    saved_model_path = "models/best_crnn_model.pth"
+
+    if os.path.exists(saved_model_path):
+        # File exists: Resume training
+        print("Found existing model. Resuming training from previous state...")
+        model.load_state_dict(torch.load(saved_model_path, map_location=torch.device('cpu')))
+        print("Successfully loaded previous model weights. Resuming training...")
+
+    else:
+        # File doesn't exist: Start fresh
+        print("No previous model found. Starting training from scratch...")
+
+
     # 3. הגדרת פונקציית שגיאה ואופטימיזציה
     # blank=0 אומר שאינדקס 0 במילון מיועד לתו ה-Blank של אלגוריתם ה-CTC
     criterion = nn.CTCLoss(blank=0, zero_infinity=True) 
