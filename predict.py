@@ -6,11 +6,10 @@ import os
 # ייבוא הארכיטקטורה והמילון שלנו
 from crnn_model import CRNN
 from ocr_dataset import HEBREW_VOCAB, IDX_TO_CHAR
+from config import *
 
-# נגדיר את אותם פרמטרים שהיו באימון
-TARGET_HEIGHT = 64
 VOCAB_SIZE = len(HEBREW_VOCAB)
-MODEL_PATH = "models/best_crnn_model.pth"
+
 
 def preprocess_image(image_path):
     """
@@ -110,9 +109,9 @@ def predict(image_path):
 if __name__ == '__main__':
     # דוגמה להרצה. שנה את הנתיב לתמונה מתוך סט האימות או תמונה חדשה שגזרת:
     # נניח: test_image = 'VAL/images/document_1_line_002.jpg'
-    test_image = 'C:/dev/stam-app/our-ocr-engine/ocr-data/TEST/images/sper_tura_Shorts_f4_004_line_007.jpg'
+
     
-    if os.path.exists(test_image):
-        predict(test_image)
+    if os.path.exists(PREDICT_IMAGE):
+        predict(PREDICT_IMAGE)
     else:
-        print(f"Please update the path '{test_image}' to an actual image from your dataset.")
+        print(f"Please update the path '{PREDICT_IMAGE}' to an actual image from your dataset.")

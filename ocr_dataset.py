@@ -104,9 +104,7 @@ def ocr_collate_fn(batch):
 if __name__ == '__main__':
     # דוגמה לאיך לקרוא לפונקציות האלו (תצטרך לשנות את הנתיבים בהתאם למחשב שלך)
     # שים לב שזה רק לבדיקה ראשונית
-    
-    TRAIN_CSV = 'C:/dev/stam-app/our-ocr-engine/ocr-data/TRAIN/train.csv'
-    TRAIN_IMG_DIR = 'C:/dev/stam-app/our-ocr-engine/ocr-data/TRAIN/images'
+    from config import TRAIN_CSV, TRAIN_IMG_DIR
     
     # בדיקה שקובץ ה-CSV קיים כדי למנוע קריסה
     if os.path.exists(TRAIN_CSV):

@@ -7,19 +7,8 @@ import os
 # ייבוא מהקבצים האחרים שכתבנו
 from crnn_model import CRNN
 from ocr_dataset import StamOCRDataset, ocr_collate_fn, HEBREW_VOCAB
+from config import *
 
-# הגדרת נתיבים (תעדכן אם השמות אצלך קצת שונים)
-TRAIN_CSV = 'C:/dev/stam-app/our-ocr-engine/ocr-data/TRAIN/train.csv'
-TRAIN_IMG_DIR = 'C:/dev/stam-app/our-ocr-engine/ocr-data/TRAIN/images'
-
-VAL_CSV = 'C:/dev/stam-app/our-ocr-engine/ocr-data/VAL/val.csv'
-VAL_IMG_DIR = 'C:/dev/stam-app/our-ocr-engine/ocr-data/VAL/images'
-
-# פרמטרים של האימון (Hyperparameters)
-BATCH_SIZE = 16          # כמה תמונות המודל רואה בכל פעם
-NUM_EPOCHS = 50          # כמה פעמים המודל יעבור על כל ה-831 תמונות
-LEARNING_RATE = 0.001    # קצב הלמידה
-TARGET_HEIGHT = 64
 VOCAB_SIZE = len(HEBREW_VOCAB) # 29 (27 אותיות + רווח + Blank)
 
 def train_model():
@@ -42,7 +31,7 @@ def train_model():
     model = CRNN(vocab_size=VOCAB_SIZE, hidden_size=256).to(device)
 
     # The path to your saved model weights
-    saved_model_path = "models/best_crnn_model.pth"
+    saved_model_path = MODEL_PATH
 
     if os.path.exists(saved_model_path):
         # File exists: Resume training

@@ -8,13 +8,9 @@ import Levenshtein  # ספרייה לחישוב מרחק בין מחרוזות (
 from crnn_model import CRNN
 from ocr_dataset import HEBREW_VOCAB
 from predict import preprocess_image, decode_predictions
+from config import *
 
-# הגדרות נתיבים ל-TEST (שנה אם התיקייה נקראת אחרת אצלך)
-TEST_CSV = 'C:/dev/stam-app/our-ocr-engine/ocr-data/TEST/test.csv'
-TEST_IMG_DIR = 'C:/dev/stam-app/our-ocr-engine/ocr-data/TEST/images'
-MODEL_PATH = "models/best_crnn_model.pth"
 
-TARGET_HEIGHT = 64
 VOCAB_SIZE = len(HEBREW_VOCAB)
 
 
